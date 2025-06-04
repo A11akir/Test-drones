@@ -290,6 +290,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 277100403}
+  - component: {fileID: 277100404}
+  - component: {fileID: 277100405}
   m_Layer: 0
   m_Name: Spawners
   m_TagString: Untagged
@@ -311,8 +313,85 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1520295767}
+  - {fileID: 315255330}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &277100404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277100402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec9736cf14334336bcf804a4a22f917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnX: 8
+  spawnY: 4.5
+--- !u!114 &277100405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 277100402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d510943cae5b745cda728a55e457d6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMap: {fileID: 277100404}
+  spawnDron: {fileID: 1520295768}
+  moveSpeed: 2
+--- !u!1 &315255329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 315255330}
+  - component: {fileID: 315255331}
+  m_Layer: 0
+  m_Name: ResSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &315255330
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315255329}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 277100403}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &315255331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 315255329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25eaf7049beb914f868b8ba2ab9ddf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resPrefab: {fileID: 5960109440423019489, guid: d93ab2c67995d474bbf90561d74c0aa6, type: 3}
+  spawnMap: {fileID: 277100404}
+  dronAI: {fileID: 277100405}
 --- !u!1 &341573366
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,8 +458,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294959839
-  m_fontColor: {r: 0.8726415, g: 0.8859504, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -724,6 +803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 668225809}
   - component: {fileID: 668225810}
+  - component: {fileID: 668225811}
   m_Layer: 5
   m_Name: SliderDronCount
   m_TagString: Untagged
@@ -740,7 +820,7 @@ RectTransform:
   m_GameObject: {fileID: 668225808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2041813075}
@@ -751,7 +831,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 100, y: 25}
+  m_AnchoredPosition: {x: 110, y: 25}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &668225810
@@ -798,13 +878,27 @@ MonoBehaviour:
   m_FillRect: {fileID: 1964849271}
   m_HandleRect: {fileID: 1550020006}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 1
   m_MaxValue: 5
   m_WholeNumbers: 1
-  m_Value: 2
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &668225811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668225808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86193cfd21d9e4236b42e274b6a4da8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sliderCount: {fileID: 668225810}
+  spawnDron: {fileID: 1520295768}
 --- !u!1 &923634770
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +957,7 @@ RectTransform:
   m_GameObject: {fileID: 1046711222}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1084848139}
@@ -874,7 +968,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300, y: 25}
+  m_AnchoredPosition: {x: 350, y: 25}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1046711224
@@ -921,8 +1015,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 110465277}
   m_HandleRect: {fileID: 1710264501}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 5
+  m_MinValue: 1
+  m_MaxValue: 10
   m_WholeNumbers: 1
   m_Value: 2
   m_OnValueChanged:
@@ -1164,7 +1258,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: count dron
+  m_text: speed dron
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1407,6 +1501,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dronBluePrefab: {fileID: 3796068023931168582, guid: 7826a2a8ec0beaa43a9dc7558c9e8e0f, type: 3}
   dronRedPrefab: {fileID: 7617473844051938430, guid: b5a8b95a66a9c74419dbb0a4d5f75c12, type: 3}
+  spawnMap: {fileID: 277100404}
+  dronsBlue: []
+  dronsRed: []
+  drons: []
 --- !u!1 &1550020005
 GameObject:
   m_ObjectHideFlags: 0
@@ -1616,8 +1714,8 @@ Transform:
   m_GameObject: {fileID: 1807484052}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
+  m_LocalScale: {x: 0.52, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1601110491}
@@ -1664,7 +1762,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5da721a27cfaf544395df1c167197f42, type: 3}
-  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.43137255}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
